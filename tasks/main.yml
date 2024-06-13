@@ -1,24 +1,5 @@
 ---
 # tasks file for sbaerlocher.veeam-agent
-
-- name: Debian | add veeam key
-  ansible.builtin.apt_key:
-    url: http://repository.veeam.com/keys/VeeamSoftwareRepo
-    state: present
-  tags:
-    - configuration
-    - packages
-
-- name: Debian | add veeam repository
-  ansible.builtin.apt_repository:
-    repo: deb http://repository.veeam.com/backup/linux/agent/dpkg/debian/{{ 'x86_64' if architecture else 'i386' }} noname veeam
-    state: present
-    filename: veeam
-    update_cache: true
-  tags:
-    - configuration
-    - packages
-
 - name: Install veeam
   ansible.builtin.apt:
     name:
