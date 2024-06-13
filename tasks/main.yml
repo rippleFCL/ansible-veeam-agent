@@ -47,7 +47,7 @@
       register: veeam_create_repository
       when: veeam.vbrserver.name not in veeam_vbrserver_list.stdout
 
-- when: veeam.repo.name is defined
+- when: veeam.repo.name is defined and veeam.repo.name is not None
   tags:
     - configuration
 
@@ -61,7 +61,7 @@
       register: veeam_create_repository
       when: veeam.repo.name not in veeam_repository_list.stdout
 
-- when: veeam.job.name is defined
+- when: veeam.job.name is defined and veeam.job.name is not None
   tags:
     - configuration
   block:
