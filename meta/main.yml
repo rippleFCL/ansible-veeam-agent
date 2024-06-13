@@ -9,13 +9,8 @@ galaxy_info:
     - name: Debian
       versions:
         - wheezy
-    - name: EL
-      versions:
-        - 6
-        - 7
-    - name: Windows
-      versions:
-        - all
+  role_name: veeam_agent
+  namespace: ripplefcl
   galaxy_tags:
     - Veeam
     - Backup
