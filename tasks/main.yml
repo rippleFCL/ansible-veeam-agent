@@ -21,7 +21,7 @@
   block:
     - name: Accept eula
       ansible.builtin.command: veeamconfig agreement accepteula
-      
+
     - name: Accept tpl
       ansible.builtin.command: veeamconfig agreement acceptthirdpartylicenses
 
@@ -45,7 +45,7 @@
         --domain {{ veeam.vbrserver.domain }}
         --password {{ veeam.vbrserver.password }}
       register: veeam_create_repository
-      when: veeam.vbrserver not in veeam_vbrserver_list.stdout
+      when: veeam.vbrserver.name not in veeam_vbrserver_list.stdout
 
 - when: veeam.repo.name is defined
   tags:
