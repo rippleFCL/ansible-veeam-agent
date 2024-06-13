@@ -16,7 +16,7 @@
     - packages
 
 # Veeam Backup & Replication
-- when: veeam.vbrserver.name is defined and ansible_os_family == 'Linux'
+- when: veeam.vbrserver.name is defined
   tags:
     - configuration
 
@@ -37,7 +37,7 @@
       register: veeam_create_repository
       when: veeam.vbrserver not in veeam_vbrserver_list.stdout
 
-- when: veeam.repo.name is defined and ansible_os_family == 'Linux'
+- when: veeam.repo.name is defined
   tags:
     - configuration
 
@@ -50,7 +50,8 @@
       ansible.builtin.command: veeamconfig repository create --name {{ veeam.repo.name }} --location {{ veeam.repo.path }}
       register: veeam_create_repository
       when: veeam.repo.name not in veeam_repository_list.stdout
-- when: ansible_os_family == 'Linux'
+
+- when: veeam.job.name is defined
   tags:
     - configuration
   block:
