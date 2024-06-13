@@ -1,5 +1,11 @@
 ---
 # tasks file for sbaerlocher.veeam-agent
+
+- name: Install veeam-rm
+  ansible.builtin.apt:
+    deb: https://repository.veeam.com/backup/linux/agent/dpkg/debian/public/pool/veeam/v/veeam-release-deb/veeam-release-deb_1.0.9_amd64.deb
+    state: present
+
 - name: Install veeam
   ansible.builtin.apt:
     name:
