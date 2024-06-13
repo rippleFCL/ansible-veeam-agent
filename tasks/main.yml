@@ -1,6 +1,8 @@
 ---
 # tasks file for sbaerlocher.veeam-agent
 
+
+
 - name: Install veeam-rm
   ansible.builtin.apt:
     deb: https://repository.veeam.com/backup/linux/agent/dpkg/debian/public/pool/veeam/v/veeam-release-deb/veeam-release-deb_1.0.9_amd64.deb
@@ -14,6 +16,9 @@
     update_cache: true
   tags:
     - packages
+
+- name: Accept eula
+  ansible.builtin.command: veeamconfig agreement accepteula && veeamconfig agreement acceptthirdpartylicenses
 
 # Veeam Backup & Replication
 - when: veeam.vbrserver.name is defined
