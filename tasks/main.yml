@@ -18,7 +18,12 @@
     - packages
 
 - name: Accept eula
-  ansible.builtin.command: veeamconfig agreement accepteula && veeamconfig agreement acceptthirdpartylicenses
+  block:
+    - name: Accept eula
+      ansible.builtin.command: veeamconfig agreement accepteula
+      
+    - name: Accept tpl
+      ansible.builtin.command: veeamconfig agreement acceptthirdpartylicenses
 
 # Veeam Backup & Replication
 - when: veeam.vbrserver.name is defined
